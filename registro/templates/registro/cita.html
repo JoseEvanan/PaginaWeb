@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+
+</head>
+<body>
+	<h1>Reserva de citas</h1>
+	
+	<form name="formulario" method="POST" class="post-form">
+       		
+       		<div>
+          {% csrf_token %} 
+          </div>	
+
+          {{   form.as_p }}
+
+      
+        
+       <button  onclick="pregunta()" disable=true id="Registrar" type="submit" class="save btn btn-default">Registrar</button >
+    </form>
+
+ <script language="JavaScript" type="text/javascript">
+    var btnEnviar = document.getElementById("Registrar");
+    btnEnviar.disabled = true;
+
+    function activarBoton() {
+        if(verificar()) {
+            btnEnviar.disabled=false
+        }else {
+            btnEnviar.disabled=true
+        }
+    }
+
+    function verificar() {
+      if (document.formulario.buscar.value.length==0){
+          document.formulario.buscar.focus()
+           return false;
+     }
+        return true;
+    }
+
+
+    function pregunta(){ 
+        if (confirm('¿Estas seguro de enviar este formulario?')){ 
+           document.formulario.submit() 
+        } 
+    } 
+
+  </script> 
+  
+        
+</body>
+</html>
+
+

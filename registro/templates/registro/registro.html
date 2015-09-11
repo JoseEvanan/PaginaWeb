@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+	 
+
+</head>
+<body>
+	<h1>Registro de ingreso</h1>
+    <form name="formulario" method="POST" class="post-form">
+       		
+       		<div>
+        	{% csrf_token %} 
+          </div>
+          
+        {{ form.as_p }}
+
+       <button  onclick="pregunta()"  id="Registrar" type="submit" class="save btn btn-default">Registrar</button >
+    </form>
+
+
+
+    <script language="JavaScript" type="text/javascript">
+		var btnEnviar = document.getElementById("Registrar");
+		btnEnviar.disabled = true;
+		var caja1 = document.formulario.nombres;
+		var caja2 = document.formulario.apellido_paterno;
+		var caja3 = document.formulario.apellido_materno;
+		var caja4 = document.formulario.dni;
+		var caja5 = document.formulario.telefono;
+		
+		caja1.onkeyup =caja2.onkeyup =caja3.onkeyup =   caja4.onkeyup =caja5.onkeyup = activarBoton;
+
+
+
+		function activarBoton() {
+
+    		if(verificar()) {
+
+          if (document.formulario.tipo_persona.value.length!=0){
+              document.formulario.tipo_persona.focus()
+              btnEnviar.disabled=false
+                }
+       		 	btnEnviar.disabled=false
+    		}else {
+          
+        		btnEnviar.disabled=true
+    		}
+		}
+
+    function colorDni(){
+
+      if(caja4.value.length!=8)
+        caja4.style.borderColor= "red" ;
+
+    }
+
+    function colorTel(){
+
+      if(caja5.value.length!=9)
+        caja5.style.borderColor= "red" ;
+        
+    }
+
+		function verificar() {
+      
+   			if( caja1.value==="" )
+        		return false;
+    		if( caja2.value==="" )
+       			 return false;
+       		if( caja3.value==="" )
+       			 return false;
+          if(caja4.value.length!=8)
+             return false
+          if(caja5.value.length!=9)
+            return false
+
+       		//document.write(caja4.value.length);
+    		return true;
+		}
+
+
+		function pregunta(){ 
+    		if (confirm('¿Estas seguro de enviar este formulario?')){ 
+    		   document.formulario.submit() 
+    		} 
+		}	
+
+	</script>
+</body>
+</html>
+

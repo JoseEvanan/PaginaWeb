@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+  <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+</head>
+<body>
+		<div class="page-header">
+
+  
+
+		<form name="formulario"method="POST" class="post-form">
+        	<h1>Reserva de citas</h1>
+			<div>
+        	{% csrf_token %} 
+          	</div>
+			<label for="id_buscar">Buscar:</label>
+			<input id="id_buscar" size="8" name="buscar" type="number" placeholder="Ingrese DNI"  required>
+			<button id="Buscar"  disabled="true"type="submit" class="save btn btn-default">Buscar</button >
+    	</form>
+    	</br></br>
+		<script language="JavaScript" type="text/javascript">
+    	var btnEnviar = document.getElementById("Buscar");
+    	btnEnviar.disabled = true;
+    	var caja = document.formulario.buscar;
+		caja.onkeyup  = activarBoton;
+  
+
+    function activarBoton() {
+        if(verificar()) {
+        	 
+
+            btnEnviar.disabled=false
+        }else {
+        
+            btnEnviar.disabled=true
+        }
+    }
+
+    function verificar() {
+      if( caja.value.length==8 )
+       			 return true;
+
+
+       	return false
+        
+    }
+
+
+    
+
+  </script> 
+	
+        </div>
+        
+	<h1>PAGINA DE INICIO</h1>
+</body>
+</html>
+
+
+    
